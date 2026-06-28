@@ -77,6 +77,10 @@ nav.scrolled{padding:12px clamp(20px,5vw,64px);background:var(--surface);border-
 .theme-btn{width:42px;height:42px;border-radius:12px;border:1px solid var(--border-strong);background:var(--surface);
   color:var(--text);cursor:pointer;display:grid;place-items:center;transition:.3s;font-size:1.1rem}
 .theme-btn:hover{transform:translateY(-2px) rotate(12deg);border-color:var(--accent);box-shadow:0 0 20px var(--glow)}
+.lang-btn{height:42px;min-width:42px;padding:0 13px;border-radius:12px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);cursor:pointer;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.82rem;letter-spacing:.04em;transition:.3s}
+.lang-btn:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 0 20px var(--glow)}
+[data-en]{transition:opacity .24s ease,filter .24s ease,transform .24s ease}
+.lang-fade{opacity:0;filter:blur(5px);transform:translateY(6px)}
 .menu-toggle{display:none;background:none;border:1px solid var(--border-strong);color:var(--text);width:42px;height:42px;border-radius:12px;cursor:pointer;font-size:1.3rem}
 
 /* layout */
@@ -249,12 +253,12 @@ footer b{color:var(--text-soft)}
 <nav id="nav">
   <div class="logo"><span class="dot"></span>Loïc&nbsp;Gnagoh</div>
   <div class="nav-links" id="navLinks">
-    <a href="#about">À propos</a>
-    <a href="#experience">Expérience</a>
-    <a href="#projects">Réalisations</a>
-    <a href="#skills">Compétences</a>
+    <a href="#about" data-en="About">À propos</a>
+    <a href="#experience" data-en="Experience">Expérience</a>
+    <a href="#projects" data-en="Projects">Réalisations</a>
+    <a href="#skills" data-en="Skills">Compétences</a>
     <a href="#contact">Contact</a>
-    <button class="theme-btn" id="themeBtn" title="Changer de thème">🌙</button>
+    <button class="lang-btn" id="langBtn" title="Français / English">🇬🇧 EN</button><button class="theme-btn" id="themeBtn" title="Changer de thème / Toggle theme">🌙</button>
   </div>
   <button class="menu-toggle" id="menuToggle">☰</button>
 </nav>
@@ -263,13 +267,13 @@ footer b{color:var(--text-soft)}
 <section class="hero" id="top">
   <div class="hero-grid">
     <div>
-      <div class="hero-badge reveal"><span class="status-dot"></span>Disponible · Paris, Île-de-France</div>
-      <h1 class="reveal d1">Bonjour, je suis<br><span class="grad">Loïc Gnagoh</span></h1>
+      <div class="hero-badge reveal"><span class="status-dot"></span><span data-en="Available · Paris, France">Disponible · Paris, Île-de-France</span></div>
+      <h1 class="reveal d1"><span data-en="Hi, I'm">Bonjour, je suis</span><br><span class="grad">Loïc Gnagoh</span></h1>
       <div class="role reveal d2"><span id="typed"></span><span class="cursor">|</span></div>
-      <p class="lead reveal d3">Développeur Java Full-Stack confirmé. Je conçois et fais évoluer des applications d'entreprise critiques — APIs, microservices et messaging — pour de grands groupes comme le Crédit Agricole et Renault.</p>
+      <p class="lead reveal d3" data-en="Senior Java Full-Stack developer. I design and evolve business-critical applications — APIs, microservices and messaging — for major groups such as Crédit Agricole and Renault.">Développeur Java Full-Stack confirmé. Je conçois et fais évoluer des applications d'entreprise critiques — APIs, microservices et messaging — pour de grands groupes comme le Crédit Agricole et Renault.</p>
       <div class="hero-cta reveal d4">
-        <a href="#contact" class="btn btn-primary">Me contacter →</a>
-        <a href="#experience" class="btn btn-ghost">Voir mon parcours</a>
+        <a href="#contact" class="btn btn-primary" data-en="Get in touch →">Me contacter →</a>
+        <a href="#experience" class="btn btn-ghost" data-en="See my journey">Voir mon parcours</a>
       </div>
     </div>
     <div class="avatar-wrap reveal d2">
@@ -281,50 +285,50 @@ footer b{color:var(--text-soft)}
     </div>
   </div>
   <div class="stats">
-    <div class="stat reveal d1"><div class="num" data-count="5">0</div><div class="lbl">ans d'expérience</div></div>
-    <div class="stat reveal d2"><div class="num" data-count="3">0</div><div class="lbl">grands groupes</div></div>
+    <div class="stat reveal d1"><div class="num" data-count="5">0</div><div class="lbl" data-en="years of experience">ans d'expérience</div></div>
+    <div class="stat reveal d2"><div class="num" data-count="3">0</div><div class="lbl" data-en="major companies">grands groupes</div></div>
     <div class="stat reveal d3"><div class="num" data-count="15" data-suffix="+">0</div><div class="lbl">technologies</div></div>
-    <div class="stat reveal d4"><div class="num" data-count="2">0</div><div class="lbl">alternants encadrés</div></div>
+    <div class="stat reveal d4"><div class="num" data-count="2">0</div><div class="lbl" data-en="juniors mentored">alternants encadrés</div></div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <span class="eyebrow reveal">01 — À propos</span>
-  <h2 class="title reveal d1">Du code propre,<br>des systèmes qui tiennent.</h2>
-  <p class="section-sub reveal d2">Spécialisé dans les architectures Java / Spring Boot, j'interviens sur l'ensemble du cycle de vie applicatif dans des environnements Agile et DevOps.</p>
+  <span class="eyebrow reveal" data-en="01 — About">01 — À propos</span>
+  <h2 class="title reveal d1" data-en="Clean code,<br>systems that hold.">Du code propre,<br>des systèmes qui tiennent.</h2>
+  <p class="section-sub reveal d2" data-en="Specialized in Java / Spring Boot architectures, I work across the full application lifecycle in Agile and DevOps environments.">Spécialisé dans les architectures Java / Spring Boot, j'interviens sur l'ensemble du cycle de vie applicatif dans des environnements Agile et DevOps.</p>
   <div class="about-grid">
     <div class="about-card reveal d1">
-      <p>Développeur Java Full-Stack confirmé, je conçois, développe et maintiens des applications d'entreprise critiques au sein de grands groupes (Crédit Agricole, Renault).</p>
-      <p>Expert des architectures Java / Spring Boot, des APIs RESTful, des microservices et du messaging (Kafka, MQ), je travaille de bout en bout : conception, développement, déploiement (Docker, Kubernetes, Cloud) et support de production.</p>
-      <p>Soucieux de la qualité du code, de la sécurité et de la performance, j'accompagne aussi mes pairs — revues de code, montée en compétence — et je contribue à l'amélioration continue des solutions. J'intègre les outils IA modernes (Claude Code, Codex) dans mon flux de développement.</p>
+      <p data-en="Senior Java Full-Stack developer, I design, build and maintain business-critical applications within major groups (Crédit Agricole, Renault).">Développeur Java Full-Stack confirmé, je conçois, développe et maintiens des applications d'entreprise critiques au sein de grands groupes (Crédit Agricole, Renault).</p>
+      <p data-en="Expert in Java / Spring Boot architectures, RESTful APIs, microservices and messaging (Kafka, MQ), I work end-to-end: design, development, deployment (Docker, Kubernetes, Cloud) and production support.">Expert des architectures Java / Spring Boot, des APIs RESTful, des microservices et du messaging (Kafka, MQ), je travaille de bout en bout : conception, développement, déploiement (Docker, Kubernetes, Cloud) et support de production.</p>
+      <p data-en="Committed to code quality, security and performance, I also mentor my peers — code reviews, upskilling — and contribute to the continuous improvement of solutions. I integrate modern AI tools (Claude Code, Codex) into my development workflow.">Soucieux de la qualité du code, de la sécurité et de la performance, j'accompagne aussi mes pairs — revues de code, montée en compétence — et je contribue à l'amélioration continue des solutions. J'intègre les outils IA modernes (Claude Code, Codex) dans mon flux de développement.</p>
     </div>
     <div class="quick">
-      <div class="quick-item reveal d1"><div class="ic">🏛️</div><div><div class="t">Architecture Hexagonale / DDD</div><div class="s">Clean Code · Design Patterns</div></div></div>
+      <div class="quick-item reveal d1"><div class="ic">🏛️</div><div><div class="t" data-en="Hexagonal Architecture / DDD">Architecture Hexagonale / DDD</div><div class="s">Clean Code · Design Patterns</div></div></div>
       <div class="quick-item reveal d2"><div class="ic">☁️</div><div><div class="t">DevOps & Cloud</div><div class="s">GitLab CI · Docker · K8s · AWS/GCP</div></div></div>
-      <div class="quick-item reveal d3"><div class="ic">🎓</div><div><div class="t">Computer Science</div><div class="s">Diplôme validé avec mention · 2021</div></div></div>
-      <div class="quick-item reveal d4"><div class="ic">🌐</div><div><div class="t">Langues</div><div class="s">Français natif · Anglais opérationnel</div></div></div>
+      <div class="quick-item reveal d3"><div class="ic">🎓</div><div><div class="t">Computer Science</div><div class="s" data-en="Degree obtained with honors · 2021">Diplôme validé avec mention · 2021</div></div></div>
+      <div class="quick-item reveal d4"><div class="ic">🌐</div><div><div class="t" data-en="Languages">Langues</div><div class="s" data-en="Native French · Working English">Français natif · Anglais opérationnel</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <span class="eyebrow reveal">02 — Parcours</span>
-  <h2 class="title reveal d1">Expérience professionnelle</h2>
-  <p class="section-sub reveal d2">Cinq années à concevoir des applications critiques pour des leaders de la banque et de l'industrie.</p>
+  <span class="eyebrow reveal" data-en="02 — Journey">02 — Parcours</span>
+  <h2 class="title reveal d1" data-en="Professional experience">Expérience professionnelle</h2>
+  <p class="section-sub reveal d2" data-en="Five years building critical applications for banking and industry leaders.">Cinq années à concevoir des applications critiques pour des leaders de la banque et de l'industrie.</p>
   <div class="timeline">
     <div class="tl-item reveal d1">
       <span class="tl-dot"></span>
       <div class="tl-card">
-        <div class="tl-head"><span class="tl-role">Développeur Java</span><span class="tl-date">Avr. 2024 — Présent</span></div>
-        <div class="tl-company">VINCI Energies · CDI — pour le <b>Crédit Agricole</b></div>
+        <div class="tl-head"><span class="tl-role" data-en="Java Developer">Développeur Java</span><span class="tl-date" data-en="Apr. 2024 — Present">Avr. 2024 — Présent</span></div>
+        <div class="tl-company" data-en="VINCI Energies · Permanent — for <b>Crédit Agricole</b>">VINCI Energies · CDI — pour le <b>Crédit Agricole</b></div>
         <ul>
-          <li>Conception et développement d'APIs RESTful avec Java & Spring Boot pour le SI bancaire.</li>
-          <li>Développement et maintenance de microservices ; études techniques et analyses d'impacts.</li>
-          <li>Diagnostic et résolution des incidents de production (support applicatif).</li>
-          <li>Déploiements Docker / Kubernetes ; gestion des bases PostgreSQL.</li>
-          <li>Contribution à la qualité, la sécurité du code et l'amélioration continue.</li>
+          <li data-en="Design and development of RESTful APIs with Java &amp; Spring Boot for the banking IS.">Conception et développement d'APIs RESTful avec Java & Spring Boot pour le SI bancaire.</li>
+          <li data-en="Development and maintenance of microservices; technical studies and impact analyses.">Développement et maintenance de microservices ; études techniques et analyses d'impacts.</li>
+          <li data-en="Diagnosis and resolution of production incidents (application support).">Diagnostic et résolution des incidents de production (support applicatif).</li>
+          <li data-en="Docker / Kubernetes deployments; PostgreSQL database management.">Déploiements Docker / Kubernetes ; gestion des bases PostgreSQL.</li>
+          <li data-en="Contribution to code quality, security and continuous improvement.">Contribution à la qualité, la sécurité du code et l'amélioration continue.</li>
         </ul>
         <div class="tags">
           <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">API REST</span><span class="tag">Kafka</span><span class="tag">GitLab</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">PostgreSQL</span><span class="tag">Vault</span><span class="tag">WebSphere/JBoss</span><span class="tag">Hexagonale/DDD</span>
@@ -334,15 +338,15 @@ footer b{color:var(--text-soft)}
     <div class="tl-item reveal d1">
       <span class="tl-dot"></span>
       <div class="tl-card">
-        <div class="tl-head"><span class="tl-role">Développeur Java / Angular</span><span class="tl-date">Fév. 2022 — Avr. 2024</span></div>
-        <div class="tl-company">EXTIA · CDI — pour le <b>Groupe Renault</b></div>
+        <div class="tl-head"><span class="tl-role" data-en="Java / Angular Developer">Développeur Java / Angular</span><span class="tl-date" data-en="Feb. 2022 — Apr. 2024">Fév. 2022 — Avr. 2024</span></div>
+        <div class="tl-company" data-en="EXTIA · Permanent — for <b>Renault Group</b>">EXTIA · CDI — pour le <b>Groupe Renault</b></div>
         <ul>
-          <li>Analyse des besoins, conception et développement de fonctionnalités Full-Stack.</li>
-          <li>Migration applicative Java & Angular ; documentation des APIs.</li>
-          <li>Migration Cloud AWS → GCP & monitoring (Dynatrace).</li>
-          <li>Mise en place de pipelines CI/CD ; déploiements Kubernetes.</li>
-          <li>Encadrement technique de 2 alternants (revues de code, montée en compétence).</li>
-          <li>Dashboards (Power BI / Spotfire) ; usage d'outils IA (Claude Code, Codex).</li>
+          <li data-en="Requirements analysis, design and development of Full-Stack features.">Analyse des besoins, conception et développement de fonctionnalités Full-Stack.</li>
+          <li data-en="Java &amp; Angular application migration; API documentation.">Migration applicative Java & Angular ; documentation des APIs.</li>
+          <li data-en="Cloud migration AWS → GCP &amp; monitoring (Dynatrace).">Migration Cloud AWS → GCP & monitoring (Dynatrace).</li>
+          <li data-en="CI/CD pipeline setup; Kubernetes deployments.">Mise en place de pipelines CI/CD ; déploiements Kubernetes.</li>
+          <li data-en="Technical mentoring of 2 work-study students (code reviews, upskilling).">Encadrement technique de 2 alternants (revues de code, montée en compétence).</li>
+          <li data-en="Dashboards (Power BI / Spotfire); use of AI tools (Claude Code, Codex).">Dashboards (Power BI / Spotfire) ; usage d'outils IA (Claude Code, Codex).</li>
         </ul>
         <div class="tags">
           <span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Kafka</span><span class="tag">Kubernetes</span><span class="tag">GitLab CI/CD</span><span class="tag">Spotfire</span><span class="tag">Agile</span>
@@ -352,11 +356,11 @@ footer b{color:var(--text-soft)}
     <div class="tl-item reveal d1">
       <span class="tl-dot"></span>
       <div class="tl-card">
-        <div class="tl-head"><span class="tl-role">Développeur Java</span><span class="tl-date">Juil. — Déc. 2021</span></div>
-        <div class="tl-company">SWConsulting · CDD — pour <b>Benchmark Consulting</b> (Canada)</div>
+        <div class="tl-head"><span class="tl-role" data-en="Java Developer">Développeur Java</span><span class="tl-date" data-en="Jul. — Dec. 2021">Juil. — Déc. 2021</span></div>
+        <div class="tl-company" data-en="SWConsulting · Fixed-term — for <b>Benchmark Consulting</b> (Canada)">SWConsulting · CDD — pour <b>Benchmark Consulting</b> (Canada)</div>
         <ul>
-          <li>Analyse des besoins et développement des fonctionnalités.</li>
-          <li>Correction des bugs ; Sprint Review.</li>
+          <li data-en="Requirements analysis and feature development.">Analyse des besoins et développement des fonctionnalités.</li>
+          <li data-en="Bug fixing; Sprint Review.">Correction des bugs ; Sprint Review.</li>
         </ul>
         <div class="tags">
           <span class="tag">JEE</span><span class="tag">ZK Framework</span><span class="tag">AWS</span><span class="tag">Jenkins</span><span class="tag">Agile</span>
@@ -368,28 +372,28 @@ footer b{color:var(--text-soft)}
 
 <!-- PROJECTS -->
 <section id="projects">
-  <span class="eyebrow reveal">03 — Réalisations</span>
-  <h2 class="title reveal d1">Projets &amp; réalisations</h2>
-  <p class="section-sub reveal d2">Des plateformes que j'ai conçues et développées de bout en bout.</p>
+  <span class="eyebrow reveal" data-en="03 — Projects">03 — Réalisations</span>
+  <h2 class="title reveal d1" data-en="Projects &amp; achievements">Projets &amp; réalisations</h2>
+  <p class="section-sub reveal d2" data-en="Platforms I designed and built end-to-end.">Des plateformes que j'ai conçues et développées de bout en bout.</p>
   <div class="proj-grid">
     <article class="proj-card featured reveal d1">
       <div class="proj-glow"></div>
       <div class="proj-body">
         <div class="proj-top">
-          <span class="proj-kind">🌍 Plateforme web · ONG</span>
-          <span class="proj-status"><span class="status-dot"></span>En ligne</span>
+          <span class="proj-kind" data-en="🌍 Web platform · NGO">🌍 Plateforme web · ONG</span>
+          <span class="proj-status"><span class="status-dot"></span><span data-en="Online">En ligne</span></span>
         </div>
         <h3 class="proj-title">CFC Europe</h3>
-        <p class="proj-desc">Plateforme web de la communauté CFC Europe — une ONG, non rattachée à une église, réunissant des membres issus de différentes églises. Elle permet d'adhérer tout en restant membre de son église, puis de devenir <b>missionnaire bénévole</b> lors des activités menées en Côte d'Ivoire et dans les autres pays d'intervention.</p>
+        <p class="proj-desc" data-en="Web platform for the CFC Europe community — an NGO, not affiliated with any church, bringing together members from different churches. It lets you join while remaining a member of your own church, then become a <b>volunteer missionary</b> during activities carried out in Côte d'Ivoire and other countries of operation.">Plateforme web de la communauté CFC Europe — une ONG, non rattachée à une église, réunissant des membres issus de différentes églises. Elle permet d'adhérer tout en restant membre de son église, puis de devenir <b>missionnaire bénévole</b> lors des activités menées en Côte d'Ivoire et dans les autres pays d'intervention.</p>
         <div class="proj-feat">
-          <span>👥 Adhésion des membres</span>
-          <span>🙌 Engagement missionnaire bénévole</span>
-          <span>🗺️ Activités multi-pays</span>
+          <span data-en="👥 Member registration">👥 Adhésion des membres</span>
+          <span data-en="🙌 Volunteer missionary engagement">🙌 Engagement missionnaire bénévole</span>
+          <span data-en="🗺️ Multi-country activities">🗺️ Activités multi-pays</span>
         </div>
         <div class="tags">
           <span class="tag">Node.js</span><span class="tag">Vue.js</span><span class="tag">JavaScript</span><span class="tag">REST API</span><span class="tag">Full-Stack</span>
         </div>
-        <a class="proj-link" href="https://app.cfc-europe.eu" target="_blank" rel="noopener">Voir la plateforme <span class="arr">↗</span></a>
+        <a class="proj-link" href="https://app.cfc-europe.eu" target="_blank" rel="noopener"><span data-en="View the platform">Voir la plateforme</span> <span class="arr">↗</span></a>
       </div>
       <div class="proj-visual" aria-hidden="true">
         <div class="browser">
@@ -408,11 +412,11 @@ footer b{color:var(--text-soft)}
 <!-- SKILLS -->
 <section id="skills">
   <span class="eyebrow reveal">04 — Stack</span>
-  <h2 class="title reveal d1">Compétences techniques</h2>
-  <p class="section-sub reveal d2">Les langages, frameworks et outils que j'utilise au quotidien.</p>
+  <h2 class="title reveal d1" data-en="Technical skills">Compétences techniques</h2>
+  <p class="section-sub reveal d2" data-en="The languages, frameworks and tools I use daily.">Les langages, frameworks et outils que j'utilise au quotidien.</p>
   <div class="skills-grid">
     <div class="skill-cat reveal d1">
-      <div class="ch"><span class="ic">💻</span><h3>Langages</h3></div>
+      <div class="ch"><span class="ic">💻</span><h3 data-en="Languages">Langages</h3></div>
       <div class="chips"><span class="tag">Java SE/EE</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">SQL</span></div>
     </div>
     <div class="skill-cat reveal d2">
@@ -424,7 +428,7 @@ footer b{color:var(--text-soft)}
       <div class="chips"><span class="tag">API RESTful</span><span class="tag">Microservices</span><span class="tag">SOAP</span><span class="tag">Hexagonale / DDD</span><span class="tag">Design Patterns</span><span class="tag">Clean Code</span></div>
     </div>
     <div class="skill-cat reveal d1">
-      <div class="ch"><span class="ic">⚡</span><h3>Messaging & Données</h3></div>
+      <div class="ch"><span class="ic">⚡</span><h3 data-en="Messaging &amp; Data">Messaging & Données</h3></div>
       <div class="chips"><span class="tag">Kafka</span><span class="tag">MQ</span><span class="tag">PostgreSQL</span><span class="tag">SQL Server</span></div>
     </div>
     <div class="skill-cat reveal d2">
@@ -432,8 +436,8 @@ footer b{color:var(--text-soft)}
       <div class="chips"><span class="tag">GitLab CI</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Maven</span><span class="tag">Jenkins</span><span class="tag">AWS</span><span class="tag">GCP</span></div>
     </div>
     <div class="skill-cat reveal d3">
-      <div class="ch"><span class="ic">🛡️</span><h3>Qualité & Méthodo</h3></div>
-      <div class="chips"><span class="tag">Tests unitaires & intégration</span><span class="tag">Audit de code</span><span class="tag">Supervision</span><span class="tag">Agile / Scrum</span></div>
+      <div class="ch"><span class="ic">🛡️</span><h3 data-en="Quality &amp; Methodology">Qualité & Méthodo</h3></div>
+      <div class="chips"><span class="tag" data-en="Unit &amp; integration tests">Tests unitaires & intégration</span><span class="tag" data-en="Code audit">Audit de code</span><span class="tag" data-en="Monitoring">Supervision</span><span class="tag">Agile / Scrum</span></div>
     </div>
   </div>
 </section>
@@ -442,8 +446,8 @@ footer b{color:var(--text-soft)}
 <section id="contact" class="contact">
   <div class="contact-card reveal">
     <span class="eyebrow" style="justify-content:center">05 — Contact</span>
-    <h2>Travaillons ensemble.</h2>
-    <p>Une opportunité, un projet ou simplement envie d'échanger ? Je réponds rapidement.</p>
+    <h2 data-en="Let's work together.">Travaillons ensemble.</h2>
+    <p data-en="An opportunity, a project, or simply want to chat? I reply quickly.">Une opportunité, un projet ou simplement envie d'échanger ? Je réponds rapidement.</p>
     <div class="contact-links">
       <a class="c-link" href="mailto:loicgnagoh@gmail.com">✉️ loicgnagoh@gmail.com</a>
       <a class="c-link" href="tel:+33699656860">📞 06 99 65 68 60</a>
@@ -453,7 +457,7 @@ footer b{color:var(--text-soft)}
   </div>
 </section>
 
-<footer>Conçu avec <b>♥</b> par Loïc Gnagoh · <span id="year"></span> · <b>Java Full-Stack Developer</b></footer>
+<footer><span data-en="Designed with <b>♥</b> by Loïc Gnagoh">Conçu avec <b>♥</b> par Loïc Gnagoh</span> · <span id="year"></span> · <b>Java Full-Stack Developer</b></footer>
 
 <script>
 // theme toggle
@@ -462,6 +466,12 @@ function setTheme(t){html.setAttribute('data-theme',t);tBtn.textContent=t==='dar
 let theme = window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
 setTheme(theme);
 tBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';setTheme(theme);});
+// language toggle
+const langBtn=document.getElementById('langBtn');let lang='fr';
+function setLangContent(l){document.querySelectorAll('[data-en]').forEach(el=>{if(el.dataset.fr===undefined)el.dataset.fr=el.innerHTML;el.innerHTML=(l==='en')?el.dataset.en:el.dataset.fr;});document.documentElement.lang=l;langBtn.textContent=(l==='en')?'🇫🇷 FR':'🇬🇧 EN';}
+function applyLang(l,animate){lang=l;if(!animate){setLangContent(l);return;}const els=document.querySelectorAll('[data-en]');els.forEach(e=>e.classList.add('lang-fade'));setTimeout(()=>{setLangContent(l);requestAnimationFrame(()=>requestAnimationFrame(()=>els.forEach(e=>e.classList.remove('lang-fade'))));},240);}
+langBtn.addEventListener('click',()=>applyLang(lang==='en'?'fr':'en',true));
+applyLang(((navigator.language||navigator.userLanguage||'fr').toLowerCase().indexOf('fr')===0)?'fr':'en');
 
 // nav scroll + progress
 const nav=document.getElementById('nav'),prog=document.getElementById('progress');
