@@ -81,6 +81,31 @@ html[data-theme="light"] .blob{opacity:.42;mix-blend-mode:multiply}
   background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
   background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 75%);opacity:.5}
 
+/* floating tech logos */
+.tech-fx{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;will-change:transform}
+.tech-fx img{position:absolute;width:clamp(34px,4vw,52px);height:auto;opacity:.12;filter:grayscale(.15) drop-shadow(0 6px 18px rgba(0,0,0,.35));animation:floatLogo var(--dur,20s) ease-in-out infinite;will-change:transform}
+html[data-theme="light"] .tech-fx img{opacity:.16;filter:grayscale(.1)}
+@keyframes floatLogo{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-26px) rotate(10deg)}}
+
+/* custom GSAP cursor */
+.cur-ring,.cur-dot{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;opacity:0}
+.cur-ring{width:40px;height:40px;border:1.6px solid var(--accent);box-shadow:0 0 18px var(--glow);transition:width .28s ease,height .28s ease,background .28s ease,border-color .28s ease,opacity .3s}
+.cur-dot{width:7px;height:7px;background:var(--accent2);box-shadow:0 0 12px var(--accent2)}
+.cur-ring.is-hover{width:64px;height:64px;background:var(--glow);border-color:var(--accent2)}
+.cur-ring.is-down{width:30px;height:30px}
+body.cursor-on{cursor:none}
+body.cursor-on a,body.cursor-on button,body.cursor-on .c-link{cursor:none}
+
+/* card spotlight */
+.tl-card,.proj-card,.about-card,.stat{position:relative}
+.tl-card::after,.proj-card::after,.about-card::after,.stat::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s ease;
+  background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),var(--glow),transparent 60%);mix-blend-mode:screen}
+html[data-theme="light"] .tl-card::after,html[data-theme="light"] .proj-card::after,html[data-theme="light"] .about-card::after,html[data-theme="light"] .stat::after{mix-blend-mode:multiply}
+.tl-card:hover::after,.proj-card:hover::after,.about-card:hover::after,.stat:hover::after{opacity:1}
+
+@media (prefers-reduced-motion:reduce){.tech-fx img{animation:none}.cur-ring,.cur-dot{display:none}}
+@media (hover:none),(pointer:coarse){.cur-ring,.cur-dot{display:none}}
+
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
   padding:18px clamp(20px,5vw,64px);backdrop-filter:blur(14px);
@@ -267,6 +292,19 @@ footer b{color:var(--text-soft)}
 <div class="progress" id="progress"></div>
 <div class="bg-fx"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grid-fx"></div>
+<div class="tech-fx" id="techFx" aria-hidden="true">
+  <img alt="" loading="lazy" style="top:14%;left:6%;--dur:19s;animation-delay:0s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg">
+  <img alt="" loading="lazy" style="top:62%;left:9%;--dur:23s;animation-delay:-3s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg">
+  <img alt="" loading="lazy" style="top:24%;left:88%;--dur:21s;animation-delay:-6s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg">
+  <img alt="" loading="lazy" style="top:74%;left:84%;--dur:25s;animation-delay:-2s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg">
+  <img alt="" loading="lazy" style="top:8%;left:52%;--dur:22s;animation-delay:-9s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg">
+  <img alt="" loading="lazy" style="top:84%;left:44%;--dur:20s;animation-delay:-5s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg">
+  <img alt="" loading="lazy" style="top:46%;left:94%;--dur:24s;animation-delay:-8s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg">
+  <img alt="" loading="lazy" style="top:40%;left:2%;--dur:26s;animation-delay:-11s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg">
+  <img alt="" loading="lazy" style="top:90%;left:66%;--dur:18s;animation-delay:-7s" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
+</div>
+<div class="cur-ring" id="curRing" aria-hidden="true"></div>
+<div class="cur-dot" id="curDot" aria-hidden="true"></div>
 
 <nav id="nav">
   <div class="logo"><span class="dot"></span>Loïc&nbsp;Gnagoh</div>
@@ -478,6 +516,7 @@ footer b{color:var(--text-soft)}
 
 <footer><span data-en="Designed with <b>♥</b> by Loïc Gnagoh">Conçu avec <b>♥</b> par Loïc Gnagoh</span> · <span id="year"></span> · <b>Java Full-Stack Developer</b></footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 // theme toggle
 const html=document.documentElement, tBtn=document.getElementById('themeBtn');
@@ -527,6 +566,47 @@ function type(){const r=roles[ri];typed.textContent=del?r.slice(0,ci--):r.slice(
 type();
 
 document.getElementById('year').textContent=new Date().getFullYear();
+
+// ---- GSAP cursor + parallax + card spotlight ----
+(function(){
+  if(typeof gsap==='undefined')return;
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  // mouse parallax on floating tech logos
+  const techFx=document.getElementById('techFx');
+  if(techFx&&!reduce){
+    const px=gsap.quickTo(techFx,'x',{duration:.9,ease:'power3'});
+    const py=gsap.quickTo(techFx,'y',{duration:.9,ease:'power3'});
+    addEventListener('mousemove',e=>{px((e.clientX/innerWidth-.5)*40);py((e.clientY/innerHeight-.5)*40);});
+  }
+
+  // card spotlight follows cursor
+  document.querySelectorAll('.tl-card,.proj-card,.about-card,.stat').forEach(c=>{
+    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      c.style.setProperty('--my',(e.clientY-r.top)+'px');});
+  });
+
+  // custom cursor (desktop only)
+  if(fine&&!reduce){
+    const ring=document.getElementById('curRing'),dot=document.getElementById('curDot');
+    document.body.classList.add('cursor-on');
+    gsap.set([ring,dot],{xPercent:-50,yPercent:-50});
+    const rx=gsap.quickTo(ring,'x',{duration:.45,ease:'power3'}),ry=gsap.quickTo(ring,'y',{duration:.45,ease:'power3'});
+    const dx=gsap.quickTo(dot,'x',{duration:.12,ease:'power2'}),dy=gsap.quickTo(dot,'y',{duration:.12,ease:'power2'});
+    let shown=false;
+    addEventListener('mousemove',e=>{rx(e.clientX);ry(e.clientY);dx(e.clientX);dy(e.clientY);
+      if(!shown){shown=true;gsap.to([ring,dot],{opacity:1,duration:.3});}});
+    document.addEventListener('mouseleave',()=>gsap.to([ring,dot],{opacity:0,duration:.3}));
+    addEventListener('mousedown',()=>ring.classList.add('is-down'));
+    addEventListener('mouseup',()=>ring.classList.remove('is-down'));
+    document.querySelectorAll('a,button,.c-link,.stat,.tl-card,.proj-card,.lang-btn,.theme-btn').forEach(el=>{
+      el.addEventListener('mouseenter',()=>ring.classList.add('is-hover'));
+      el.addEventListener('mouseleave',()=>ring.classList.remove('is-hover'));
+    });
+  }
+})();
 </script>
 <style>.cursor{animation:blink 1s steps(2) infinite;color:var(--accent2)}@keyframes blink{50%{opacity:0}}</style>
 </body>
