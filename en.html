@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loïc Gnagoh — Développeur Java Full-Stack</title>
-<meta name="description" content="Portfolio de Loïc Gnagoh, développeur Java Full-Stack — Spring Boot, microservices, Kafka, Cloud, DevOps.">
-<link rel="canonical" href="https://loic-tech.github.io/">
+<title>Loïc Gnagoh — Java Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Loïc Gnagoh, Java Full-Stack developer — Spring Boot, microservices, Kafka, Cloud, DevOps.">
+<link rel="canonical" href="https://loic-tech.github.io/en.html">
 <!-- Open Graph (preview WhatsApp, LinkedIn, iMessage, Slack, Facebook…) -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://loic-tech.github.io/">
+<meta property="og:url" content="https://loic-tech.github.io/en.html">
 <meta property="og:site_name" content="Loïc Gnagoh">
-<meta property="og:title" content="Loïc Gnagoh — Développeur Java Full-Stack">
-<meta property="og:description" content="Portfolio de Loïc Gnagoh, développeur Java Full-Stack — Spring Boot, microservices, Kafka, Cloud, DevOps.">
-<meta property="og:image" content="https://loic-tech.github.io/og-image.png">
+<meta property="og:title" content="Loïc Gnagoh — Java Full-Stack Developer">
+<meta property="og:description" content="Portfolio of Loïc Gnagoh, Java Full-Stack developer — Spring Boot, microservices, Kafka, Cloud, DevOps.">
+<meta property="og:image" content="https://loic-tech.github.io/og-image-en.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Loïc Gnagoh — Développeur Java Full-Stack">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image:alt" content="Loïc Gnagoh — Java Full-Stack Developer">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loïc Gnagoh — Développeur Java Full-Stack">
-<meta name="twitter:description" content="Portfolio de Loïc Gnagoh, développeur Java Full-Stack — Spring Boot, microservices, Kafka, Cloud, DevOps.">
-<meta name="twitter:image" content="https://loic-tech.github.io/og-image.png">
+<meta name="twitter:title" content="Loïc Gnagoh — Java Full-Stack Developer">
+<meta name="twitter:description" content="Portfolio of Loïc Gnagoh, Java Full-Stack developer — Spring Boot, microservices, Kafka, Cloud, DevOps.">
+<meta name="twitter:image" content="https://loic-tech.github.io/og-image-en.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -490,7 +490,7 @@ const langBtn=document.getElementById('langBtn');let lang='fr';
 function setLangContent(l){document.querySelectorAll('[data-en]').forEach(el=>{if(el.dataset.fr===undefined)el.dataset.fr=el.innerHTML;el.innerHTML=(l==='en')?el.dataset.en:el.dataset.fr;});document.documentElement.lang=l;langBtn.textContent=(l==='en')?'🇫🇷 FR':'🇬🇧 EN';}
 function applyLang(l,animate){lang=l;if(!animate){setLangContent(l);return;}const els=document.querySelectorAll('[data-en]');els.forEach(e=>e.classList.add('lang-fade'));setTimeout(()=>{setLangContent(l);requestAnimationFrame(()=>requestAnimationFrame(()=>els.forEach(e=>e.classList.remove('lang-fade'))));},240);}
 langBtn.addEventListener('click',()=>applyLang(lang==='en'?'fr':'en',true));
-applyLang(((navigator.language||navigator.userLanguage||'fr').toLowerCase().indexOf('fr')===0)?'fr':'en');
+applyLang('en');
 
 // nav scroll + progress
 const nav=document.getElementById('nav'),prog=document.getElementById('progress');
